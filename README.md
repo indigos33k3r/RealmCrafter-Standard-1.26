@@ -1,3 +1,4 @@
+![alt text][logo]
 [logo]: https://github.com/zarosath/realmcrafter-standard-1.26/raw/master/header_mmorpg.gif "Logo Title Text 2"
 ![Screenshot](header_mmorpg.gif)
 ![Screenshot](header_bg.jpg)
