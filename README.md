@@ -12,6 +12,11 @@ The Realm Crafter MMORPG engine gives you the power to create your own multiplay
 
 
 
+# Resources
+
+* [List of scripts](http://realmcrafter.boards.net/thread/22/list-scripts?page=1&scrollTo=40)
+
+
 
 ![Screenshot](logo.gif)
 
