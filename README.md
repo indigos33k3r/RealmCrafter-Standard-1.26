@@ -4,3 +4,5 @@
 /master/images/header_mmorpg.gif)
 
 # RealmCrafter-1.26
+[[https://github.com//zarosath/RealmCrafter-Standard-1.26
+/master/images/header_bg.jpg|alt=octocat]]
