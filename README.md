@@ -11,6 +11,8 @@ The Realm Crafter MMORPG engine gives you the power to create your own multiplay
 * [Creating your first zone with Realm Crafter Part 3](https://www.youtube.com/watch?v=Ivm4cVlZe0g)
 
 
+
+
 ![Screenshot](logo.gif)
 
-[Realmcrafter boards](http://realmcrafter.boards.net/)
+* [Realmcrafter boards](http://realmcrafter.boards.net/)
