@@ -1,0 +1,14 @@
+[21:25:25]  Loaded options from file
+[21:25:25]  Gooey loaded for menu
+[21:25:27]  Options menu complete
+[21:25:27]  EULA complete
+[21:25:27]  Loaded animation sets
+[21:25:27]  Server chosen
+[21:25:27]  Logged in
+[21:25:30]  Character selection complete
+[21:25:30]  Menu finished - starting actual game
+[21:25:31]  Loaded general game media
+[21:25:31]  Successfully connected to server
+[21:25:31]  Game started
+[21:25:33]  Entered zone: Starter zone
+[21:26:36]  Reloaded current zone

@@ -1,0 +1,144 @@
+Using "RC_Core.rcm"
+
+; Date/Time: 12:36:30 AM on 10/7/2010
+
+; By Naddaz on TAZCO
+
+; Attack script, used if you set the combat damage formula to "advanced"
+
+; The actor is the attacker, and the context actor is the actor being attacked. in this case the target.
+
+;This basic attack script is for melee combat only.
+
+Function Main()
+
+Player = Actor()
+
+Target = ContextActor()
+
+;Name check
+
+PName$ = Name(Player)
+
+TName$ = Name(Target)
+
+;Level Check
+
+PLvl% = ActorLevel(Player)
+
+TLvl% = ActorLevel(Taget)
+
+;Stat Check
+
+;Health
+
+PHealth% = Attribute(Player, "Health") ;Player Hp
+
+THealth% = Attribute(Target, "Health") ;Target HP
+
+;Strength
+
+PStr% = Attribute(Player, "Strength") ;Player str
+
+TStr% = Attribute(Target, "Strength") ;Target Str
+
+;Dexterity
+
+PDex% = Attribute(Player, "Dexterity") ;Player Dexterity
+
+TDex% = Attribute(Target, "Dexterity") ;Target Dexterity
+
+;Magic
+
+PMag% = Attribute(Player, "Magic") ;Player Magic
+
+TMag% = Attribute(Target, "Magic") ;Target Magic
+
+;Toughness
+
+PTou% = Attribute(Player, "Toughness") ;Player Tou
+
+TTou% = Attribute(Target, "Toughness") ;Target Tou 
+
+    SetActorTarget(Target, Player) ; make npc attack
+
+    SetActorTarget(Player, Target) ; make npc attack
+
+;Start Melee 
+
+;Target Defence.
+
+;get armor amount from target.
+
+TArmor% = ItemArmor(ActorChest(Target)) + ItemArmor(ActorHat(Target)) + ItemArmor(ActorFeet(Target)) + ItemArmor(ActorBelt(Target)) + ItemArmor(ActorLegs(Target)) + ItemArmor(ActorHands(Target)) + ItemArmor(ActorShield(Target)) ;defenders total armor
+
+TotTarArmor% = TArmor + TTou / 8  ;target armor + target Tou divided by 8
+
+;Melee Damage
+
+WepDmg% = ItemDamage(ActorWeapon(Player)) ;Player weapon damage
+
+Dmg% = WepDmg + PStr + PTou + Rand(5, 9)  
+
+ToDoDmg% = Dmg - TotTarArmor ;take damage from target defence and do the rest as damage.
+
+
+;Chance to hit/miss
+
+
+MissC% = Rand(45, 150)
+
+PDexC% = PDex + Rand(5, 175)
+
+
+    If (MissC > PDexC) ;if miss is greater then target dex then player misses
+
+        OutPut(Player, "You have Miss " + TName, 230, 145, 23)
+
+        DoEvents(1500)
+
+        Return
+
+    Endif    
+
+
+DoEvents(1000)
+
+
+;Do Animations and extras
+
+AnimateActor(Player, "Right Hand Attack", 1.7)
+
+TotDoDmg% = Attribute(Target, "Health")- ToDoDmg ; take damage from target health.
+
+    If (TotDoDmg% <= 0)
+
+        ;Target is dead set xp and end attack.
+
+        Output(Player, "You have killed " + TName, 255, 0, 0)
+
+       Output(Target, "You have been killed by " + PName, 255, 0, 0)
+
+        KillActor(Target, Player)
+
+        Return
+
+    Endif    
+
+
+
+
+;Continue and do Damage 
+
+
+CreateFloatingNumber(Target, ToDoDmg, 255, 0, 0) ;Red normal attack do damage above player.
+
+SetAttribute(Target, "Health", TotDoDmg) ;set targets health
+
+
+;OutPut(Player, "You have done " + ToDoDmg+ " to " + TName, 230, 45, 45) ;uncomment both if you want the text for damage to show.
+
+;OutPut(Target, + PName + " has done " + ToDoDmg+ " to you!!", 230, 45, 45)
+
+End Function
+;End Basic Attack script 
